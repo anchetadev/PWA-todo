@@ -12,3 +12,7 @@ Technologies used:
 - IndexedDB
 - service worker
 - My cerebrum
+
+# Deployment
+
+Coming soon! App is not ready
