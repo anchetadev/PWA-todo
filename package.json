@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/ancheta98/PWA-todo/issues"
   },
-  "homepage": "https://github.com/ancheta98/PWA-todo#readme"
+  "homepage": "https://github.com/ancheta98/PWA-todo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mysql": "^2.18.1"
+  }
 }
