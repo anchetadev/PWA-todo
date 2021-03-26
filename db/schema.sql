@@ -1,0 +1,7 @@
+USE todopwa;
+
+CREATE TABLE todos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
+
