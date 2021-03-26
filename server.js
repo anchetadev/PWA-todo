@@ -37,13 +37,20 @@ app.set("view engine", "handlebars");
 app.get("/", function(req, res){
     connection.query("SELECT * FROM todos;", function(err, todosFromDB) {
         if (err) throw err;
-        console.log(todosFromDB)
         res.render("index", {todos: todosFromDB})
       });
     
 })
 
-
+app.post("/todo", (req, res) => {
+  console.log(req.body)
+  // console.log(data)
+  connection.query(`INSERT INTO todos (name) VALUES ("${req.body.name}");`, function(err, res) {
+    if (err) throw err;
+    
+  });
+  res.redirect("/")
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>

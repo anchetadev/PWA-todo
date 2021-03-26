@@ -95,7 +95,7 @@ Fetch:
 
 
 
-##### Important to note: Refreshing the page will not properly update the Service Worker if changed or updated, you must close any tabs of your app and reopen it in a new tab/window. This will ensure that the old Service Worker has enough time to be considered out of use and so will be updated properly. Check out the service worker reading in the [Main Outline Readme](../readme.md)
+##### Important to note: Refreshing the page will not properly update the Service Worker if changed or updated, you must close any tabs of your app and reopen it in a new tab/window. This will ensure that the old Service Worker has enough time to be considered out of use and so will be updated properly. Check out this service worker reading [here](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker)
 
 <strong>1</strong>: [Manifest page of the Codelabs resource](https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3 "Citing resources my English teachers would be proud")
 <strong>2</strong>: [Google resource on the activate](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle "This can be confusing but don't get caught up in the details too much")(I really like the dog and cat example he uses to show how activate happens only after the first page load you'll have to read more to know what this means!)

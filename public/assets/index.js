@@ -53,14 +53,37 @@ function getTasks() {
 }
 
 $("#newTask").click(function () {
-  var task = $("#taskName").val().trim();
-  var transaction = db.transaction("tasks", "readwrite");
-  var tasksStore = transaction.objectStore("tasks");
-  let addReq = tasksStore.add({ name: task });
-  addReq.onsuccess = function (e) {
-    $("#taskName").val("");
-    getTasks();
+  // var task = $("#taskName").val().trim()
+  var task = {
+    name: $("#taskName").val().trim()
   };
+  // console.log(JSON.stringify(task, "helloooo"))
+    //send a request to the server to post our todo item
+  fetch("/todo", {
+    method: "POST",
+    body: JSON.stringify(task),
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => {
+    
+    $("#taskName").val("");
+    console.log("added task")
+    getTasks()
+    return response.json(); 
+  })
+  .catch(err =>{
+    var transaction = db.transaction("tasks", "readwrite");
+    var tasksStore = transaction.objectStore("tasks");
+    let addReq = tasksStore.add({ name: task.name });
+    addReq.onsuccess = function (e) {
+      $("#taskName").val("");
+      getTasks();
+    };
+  })
+
 });
 
 $(document).on("click", ".deleteBtn", function () {

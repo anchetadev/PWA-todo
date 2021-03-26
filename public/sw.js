@@ -11,7 +11,7 @@ self.addEventListener("install", function (e) {
           "/icons/list512.png",
           "./manifest.json",
           "./index.js",
-          "./index.html",
+          "./views",
         ])
         .then(function () {
           console.log("cached!");
