@@ -2,14 +2,13 @@
     <h1>PWA example</h1>
     <p>You can use this site offline!</p>
 </div>
-<p>this list is in mysql will implement a way to do offline with mysql soon</p>
-<ul>
-    {{!-- used for testing here for seeing mysql data --}}
-    {{!-- {{#each todos}}
+{{!-- <ul>
+    used for testing here for seeing mysql data
+    {{#each todos}}
     <li>{{this.id}}: {{this.name}}</li>
 
-    {{/each}} --}}
-</ul>
+    {{/each}}
+</ul> --}}
 <!-- maybe some inputs for a simple to do list -->
 <div class="container">
     <form>
@@ -28,7 +27,7 @@
         </li>
     </ul>
 </div>
-<!-- Modal -->
+<!-- Modal for editing -->
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -52,7 +51,7 @@
         </div>
     </div>
 </div>
-{{!-- Modal  --}}
+{{!-- Modal for when user is offline--}}
 <div class="modal fade" id="offline" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

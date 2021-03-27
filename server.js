@@ -44,8 +44,25 @@ app.get("/", function(req, res){
 
 app.post("/todo", (req, res) => {
   console.log(req.body)
-  // console.log(data)
   connection.query(`INSERT INTO todos (name) VALUES ("${req.body.name}");`, function(err, res) {
+    if (err) throw err;
+    
+  });
+  res.redirect("/")
+});
+app.post("/todos", (req, res) => {
+  console.log(req.body)
+  var query = "INSERT INTO todos (name) VALUES ";
+  req.body.map(task => {
+    // if it's the last task in the list then we don't need a comma
+    if (req.body.indexOf(task) == req.body.length -1) {
+      query += `("${task.name}")` 
+    }else{
+      query += `("${task.name}"),` 
+    }
+  })
+  query+= ";"
+  connection.query(query, function(err, res) {
     if (err) throw err;
     
   });
