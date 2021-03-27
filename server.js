@@ -52,6 +52,15 @@ app.post("/todo", (req, res) => {
   res.redirect("/")
 });
 
+app.delete("/todo/:id", (req,res)=>{
+  var taskId = req.params.id
+  console.log(taskId)
+  connection.query(`DELETE FROM todos WHERE id = ${taskId};`, function(err, res) {
+    if (err) throw err;
+    
+  });
+})
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)

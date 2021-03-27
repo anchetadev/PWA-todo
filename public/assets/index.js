@@ -84,14 +84,41 @@ $("#newTask").click(function () {
 });
 
 $(document).on("click", ".deleteBtn", function () {
-  var transaction = db.transaction("tasks", "readwrite");
-  const store = transaction.objectStore("tasks");
+  $("#offline").modal("show")
   let taskId = $(this).attr("idNo");
-  console.log(taskId);
-  var deleteReq = store.delete(Number(taskId));
-  deleteReq.onsuccess = function () {
-    getTasks();
-  };
+  if(navigator.onLine){
+    fetch("/todo/"+taskId, {
+      method: "DELETE",
+    })
+    .then(response => {
+      console.log("deleted task")
+      getTasks()
+      return response.json(); 
+    })
+    .catch(err =>{
+      throw err
+
+    })
+  }else{
+    // if we are offline then we will tell the user that they can't delete stuff offline
+    // currently thinking of new ways to handle delete and edit offline 
+    // that would keep the site intuitive
+    $("#offline").modal("show")
+      // code to edit indexedDB if I want to delete offline
+      // var transaction = db.transaction("tasks", "readwrite");
+      // const store = transaction.objectStore("tasks");
+      // var transaction = db.transaction("tasks", "readwrite");
+      // var tasksStore = transaction.objectStore("tasks");
+      // let addReq = tasksStore.add({ name: task.name });
+      // addReq.onsuccess = function (e) {
+      //   $("#taskName").val("");
+      //   getTasks();
+      // };
+  }
+
+  
+
+
 });
 
 $(document).on("click", ".editBtn", function () {
