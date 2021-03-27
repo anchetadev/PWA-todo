@@ -46,19 +46,17 @@ function getTasks() {
           " class='btn btn-danger deleteBtn'>Delete Task</button>" +
           "<button style='float: right; margin-right:5px;' type='button' idNo=" +
           item.id +
-          " class='btn btn-info editBtn' data-toggle='modal' data-target='#exampleModalCenter'>Edit Task</button>"
+          " class='btn btn-info editBtn' data-toggle='modal' data-target='#exampleModalCenter'>Edit Task</button></li>"
       );
     });
   };
 }
 
 $("#newTask").click(function () {
-  // var task = $("#taskName").val().trim()
   var task = {
     name: $("#taskName").val().trim()
   };
-  // console.log(JSON.stringify(task, "helloooo"))
-    //send a request to the server to post our todo item
+  //send a request to the server to post our todo item
   fetch("/todo", {
     method: "POST",
     body: JSON.stringify(task),
@@ -68,7 +66,6 @@ $("#newTask").click(function () {
     }
   })
   .then(response => {
-    
     $("#taskName").val("");
     console.log("added task")
     getTasks()
